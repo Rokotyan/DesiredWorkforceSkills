@@ -34,11 +34,11 @@ function createVisualization(err, dataTSV ){
 	});
 
 	var graph = NetworkGraph( document.getElementById( 'Graph' ), data );
-	graph.onNodeMouseOver( function(d) {
-		d3.select('.description').text( d.name );
-	});
-	graph.onNodeMouseLeave( function(d) {
-		d3.select('.description').text('');
-	});
+	// graph.onNodeMouseOver( function(d) {
+	// 	d3.select('.description').text( d.name );
+	// });
+	// graph.onNodeMouseLeave( function(d) {
+	// 	d3.select('.description').text('');
+	// });
 }
 
