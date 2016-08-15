@@ -25,6 +25,8 @@ function NetworkGraph( element, data, options ) {
 	    .size([width, height])
 	    .on("tick", forceTick);//.start();
 
+	var drag = force.drag().on("dragstart", onDragStart);
+
 	var fillColor = d3.scale.ordinal().range( options.fillColors );
 	var getColor = function(k) {
 		var color = (k in options.colorMap) ? options.colorMap[k] : fillColor(k);
@@ -34,7 +36,8 @@ function NetworkGraph( element, data, options ) {
 	var svg = sel.append("svg")
 	    .attr("width", '100%')
 	    .attr("height", '100%')
-	    .call(zoomBehaviour);
+	    .call(zoomBehaviour)
+	    .on('dblclick.zoom', null);
 
 	var graph = svg.append('g').attr('transform', 'translate('+[options.margin.left, options.margin.top]+')' );
 
@@ -55,7 +58,8 @@ function NetworkGraph( element, data, options ) {
 	    .call(force.drag)
 	    .on('mousedown', function(){ d3.event.stopPropagation(); })
 	    .on('mouseover', nodeMouseOver)
-	    .on('mouseleave', nodeMouseLeave);
+	    .on('mouseleave', nodeMouseLeave)
+	    .on("dblclick", nodeDblClick);
 
 	var node = gnodes.append("circle")
 	      .attr("class", "node")
@@ -132,6 +136,14 @@ function NetworkGraph( element, data, options ) {
 		var scale = zoomBehaviour.scale() > 1  ? 1/zoomBehaviour.scale() : null;
 		linksGroup.attr('stroke-width', scale );
 		node.attr('transform',scale ? 'scale('+scale+')' : null );
+	}
+
+	function onDragStart(d,i){
+		d3.select(this).classed("fixed", d.fixed = true);
+	}
+
+	function nodeDblClick(d,i){
+		d3.select(this).classed("fixed", d.fixed = false);
 	}
 
 	function nodeMouseOver(d,i){

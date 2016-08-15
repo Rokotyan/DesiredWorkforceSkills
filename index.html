@@ -71,6 +71,9 @@
     stroke-opacity: .2;
   }
 
+  .fixed > circle {
+    stroke-width: 4px;
+  }
 </style>
   <script src="src/Utils.js"></script>
   <script src="src/Options.js"></script>
@@ -81,7 +84,7 @@
   <div class='titleContainer'>
     <div class='title'>Desired Workforce Skills - A CultivateMe Report</div>
     <div class='subtitle'>Based on the findings of fourteen recent reports from around the world</div>
-    <div class='description'>+ Zoom in or hover over the nodes to see their names +</div>
+    <div class='description'>Zoom in or hover over the nodes to see their names. Drag nodes to fix their position </div>
   </div>
 	<div style='position: absolute; width: 100%; height: 100%; '>
     <div class='NetworkGraph' id='Graph' style='position: relative; width: 100%; height: 100%;'></div>
