@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Desired Workforce Skills</title>
+  <script src="lib/d3.min.js"></script>
+  <script src="lib/d3.tip.js"></script>
+  <script src="lib/queue.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+     .d3-tip{line-height:1.4;font-weight:300;font-family:Source Sans Pro;font-size:16px;padding:15px;background:RGBA(246, 246, 246, 1);box-shadow: 0px 0px 3px grey; max-width: 300px; text-align: center; color:#000;border-radius:4px;pointer-events:none}.d3-tip:after{box-sizing:border-box;display:inline;font-size:18px;width:100%;line-height:0.5;color:RGBA(246, 246, 246, 1);position:absolute;pointer-events:none}.d3-tip.n:after{content:"\25BC";margin:-2px 0 0;top:100%;left:0;text-align:center}.d3-tip.e:after{content:"\25C0";margin:-4px 0 0;top:50%;left:-8px}.d3-tip.s:after{content:"\25B2";margin:0 0 1px;top:-8px;left:0;text-align:center}.d3-tip.w:after{content:"\25B6";margin:-4px 0 0 -1px;top:50%;left:100%}
+  </style>
+  <style type="text/css">
+
+  	* {
+      font-family: Source Sans Pro;
+	  	-webkit-box-sizing: border-box;
+	       -moz-box-sizing: border-box;
+	            box-sizing: border-box;
+	}
+
+  body {
+		margin: 0px 0px;
+		background-color: #fff;
+	}
+
+  .titleContainer{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .title {
+    font-size: 18pt;
+    font-weight: 600;
+  }
+  .subtitle{
+    font-size: 12pt;
+    color: grey;
+  }
+  .description {
+    margin-top: 5px;
+    font-size: 10pt;
+  }
+
+  .h.grid {
+    stroke-dasharray: 10 10;
+  }
+
+  .overlay{
+    position: absolute;
+  }
+
+  #colorOverlay {
+    bottom: 5%;
+    left: 5%;
+  }
+
+  #sizeOverlay {
+    right: 5%;
+    bottom: 8%;
+  }
+  .node {
+    /*stroke: #fff;*/
+    stroke-width: 1.5px;
+  }
+
+  .link {
+    stroke: #999;
+    stroke-opacity: .2;
+  }
+
+</style>
+  <script src="src/Utils.js"></script>
+  <script src="src/Options.js"></script>
+  <script src="src/NetworkGraph.js"></script>
+  <script src="src/main.js"></script>
+</head>
+<body>
+  <div class='titleContainer'>
+    <div class='title'>Desired Workforce Skills - A CultivateMe Report</div>
+    <div class='subtitle'>Based on the findings of fourteen recent reports from around the world</div>
+    <div class='description'>+ Zoom in or hover over the nodes to see their names +</div>
+  </div>
+	<div style='position: absolute; width: 100%; height: 100%; '>
+    <div class='NetworkGraph' id='Graph' style='position: relative; width: 100%; height: 100%;'></div>
+	</div>
+</body>
